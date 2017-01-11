@@ -58,3 +58,50 @@ resource "aws_subnet" "public" {
 		Name = "public"
 	}
 }
+
+#--------------------------------------------------------------
+# Subnets - Private
+#--------------------------------------------------------------
+resource "aws_subnet" "private1" {
+	vpc_id     				= "${aws_vpc.ansiform.id}"
+	cidr_block 				= "${var.private1_cidr}"
+	availability_zone 		= "us-east-1a"
+	map_public_ip_on_launch = false 
+
+	tags{
+		Name = "private1"
+	}
+}
+
+resource "aws_subnet" "private2" {
+	vpc_id     				= "${aws_vpc.ansiform.id}"
+	cidr_block 				= "${var.private2_cidr}"
+	availability_zone 		= "us-east-1c"
+	map_public_ip_on_launch = false 
+
+	tags{
+		Name = "private2"
+	}
+}
+
+resource "aws_subnet" "rds1" {
+	vpc_id     				= "${aws_vpc.ansiform.id}"
+	cidr_block 				= "${var.rds1_cidr}"
+	availability_zone 		= "us-east-1a"
+	map_public_ip_on_launch = false 
+
+	tags{
+		Name = "rds1"
+	}
+}
+
+resource "aws_subnet" "rds2" {
+	vpc_id     				= "${aws_vpc.ansiform.id}"
+	cidr_block 				= "${var.rds2_cidr}"
+	availability_zone 		= "us-east-1c"
+	map_public_ip_on_launch = false 
+
+	tags{
+		Name = "rds2"
+	}
+}
