@@ -34,3 +34,17 @@ resource "aws_route_table" "public" {
 	}
 }
 
+#--------------------------------------------------------------
+# Route Table - private
+#--------------------------------------------------------------
+resource "aws_default_route_table" "private" {
+	default_route_table_id = "${aws_vpc.ansiform.default_route_table_id}"
+
+	tags {
+		Name = "private"
+	}
+}
+
+#--------------------------------------------------------------
+# Subnet - Public
+#--------------------------------------------------------------
