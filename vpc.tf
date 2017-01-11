@@ -105,3 +105,36 @@ resource "aws_subnet" "rds2" {
 		Name = "rds2"
 	}
 }
+
+resource "aws_subnet" "rds3" {
+	vpc_id     				= "${aws_vpc.ansiform.id}"
+	cidr_block 				= "${var.rds3_cidr}"
+	availability_zone 		= "us-east-1d"
+	map_public_ip_on_launch = false 
+
+	tags{
+		Name = "rds3"
+	}
+}
+
+#--------------------------------------------------------------
+# Route Table Associations
+#--------------------------------------------------------------
+resource "aws_route_table_association" "public_association" {
+	subnet_id      = "${aws_subnet.public.id}"
+	route_table_id = "${aws_route_table.public.id}" 
+}
+
+resource "aws_route_table_association" "priavte1_association" {
+	subnet_id      = "${aws_subnet.private1.id}"
+	route_table_id = "${aws_route_table.public.id}" 
+}
+
+resource "aws_route_table_association" "priavte2_association" {
+	subnet_id      = "${aws_subnet.private2.id}"
+	route_table_id = "${aws_route_table.public.id}" 
+}
+
+#--------------------------------------------------------------
+# RDS Subnet Group
+#--------------------------------------------------------------
