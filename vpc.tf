@@ -138,3 +138,32 @@ resource "aws_route_table_association" "priavte2_association" {
 #--------------------------------------------------------------
 # RDS Subnet Group
 #--------------------------------------------------------------
+resource "aws_db_subnet_group" "rds_subnet" {
+	name 	   = "rds_subnet"
+	subnet_ids = ["${aws_subnet.rds1.id}", "${aws_subnet.rds2.id}", "${aws_subnet.rds3.id}"]
+
+	tags {
+		Name = "rds_subnets"
+	}
+}
+
+#--------------------------------------------------------------
+# S3 VPC Endpoint
+#--------------------------------------------------------------
+resource "aws_vpc_endpoint" "private-s3" {
+    vpc_id          = "${aws_vpc.ansiform.id}"
+    service_name    = "com.amazonaws.${var.aws_region}.s3"
+    route_table_ids = ["${aws_vpc.ansiform.main_route_table_id}", "${aws_route_table.public.id}"]
+    policy          = <<POLICY
+{
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "*",
+      "Resource": "*",
+      "Principal": "*"
+    }
+  ]
+}
+POLICY
+}
