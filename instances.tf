@@ -30,12 +30,7 @@ resource "aws_instance" "dev" {
 	subnet_id              = "${aws_subnet.public.id}"
 
 	provisioner "local-exec" {
-		command = "cat <<EOF > aws_hosts
-[dev]
-${aws_instance.dev.public_ip}
-[dev:vars]
-s3code=${aws_s3_bucket.code.bucket}
-EOF"
+		command = "cat <<EOF > aws_hosts\n[dev]\n${aws_instance.dev.public_ip}\n[dev:vars]\ns3code=${aws_s3_bucket.s3_bucket.bucket}EOF"
 	}
 
 	provisioner "local-exec" {
