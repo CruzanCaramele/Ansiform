@@ -1,4 +1,5 @@
-"terraform.tfvars"  
 terraform.tfvars  
 .vagrant
 .ssh
+terraform.tfstate
+terraform.tfstate.backup
