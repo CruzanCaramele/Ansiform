@@ -11,7 +11,7 @@ resource "aws_security_group" "public" {
 		from_port 	= 22
 		to_port   	= 22
 		protocol  	= "tcp"
-		cidr_blocks = ["${var.local_ip}"]
+		cidr_blocks = ["0.0.0.0/0"]
 	}
 
 	# http access
@@ -34,7 +34,7 @@ resource "aws_security_group" "public" {
 # Private SG
 #--------------------------------------------------------------
 resource "aws_security_group" "private" {
-	name 		= "sg_public"
+	name 		= "sg_private"
 	description = "used for the private instances"
 	vpc_id 		= "${aws_vpc.ansiform.id}"
 
@@ -58,7 +58,7 @@ resource "aws_security_group" "private" {
 # RDS SG
 #--------------------------------------------------------------
 resource "aws_security_group" "rds" {
-	name 		= "sg_public"
+	name 		= "sg_rds"
 	description = "used for the rds instances"
 	vpc_id 		= "${aws_vpc.ansiform.id}"
 
