@@ -65,7 +65,7 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private1" {
 	vpc_id     				= "${aws_vpc.ansiform.id}"
 	cidr_block 				= "${var.private1_cidr}"
-	availability_zone 		= "us-east-1a"
+	availability_zone 		= "us-east-1e"
 	map_public_ip_on_launch = false 
 
 	tags{
@@ -87,7 +87,7 @@ resource "aws_subnet" "private2" {
 resource "aws_subnet" "rds1" {
 	vpc_id     				= "${aws_vpc.ansiform.id}"
 	cidr_block 				= "${var.rds1_cidr}"
-	availability_zone 		= "us-east-1a"
+	availability_zone 		= "us-east-1e"
 	map_public_ip_on_launch = false 
 
 	tags{
