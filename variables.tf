@@ -39,41 +39,40 @@ variable "public_cidr" {
 variable "private1_cidr" {
 	type        = "string"
 	description = "describe your variable"
-	default     = "10.1.2.0/24	"
+	default     = "10.1.2.0/24"
 }
 
 variable "private2_cidr" {
 	type        = "string"
 	description = "describe your variable"
-	default     = "10.1.3.0/24	"
+	default     = "10.1.3.0/24"
 }
 
 variable "rds1_cidr" {
 	type        = "string"
 	description = "describe your variable"
-	default     = "10.1.4.0/24	"
+	default     = "10.1.4.0/24"
 }
 
 variable "rds2_cidr" {
 	type        = "string"
 	description = "describe your variable"
-	default     = "10.1.5.0/24	"
+	default     = "10.1.5.0/24"
 }
 
 variable "rds3_cidr" {
 	type        = "string"
 	description = "describe your variable"
-	default     = "10.1.6.0/24	"
+	default     = "10.1.6.0/24"
 }
 
 #--------------------------------------------------------------
 # SSH local IP Variable
 #--------------------------------------------------------------
-variable "local_ip" {
-	type 		= "string"
-	description = "describe your variable"
-	default     = "default_value"
-}
+# variable "local_ip" {
+# 	type 		= "string"
+# 	description = "describe your variable"
+# }
 
 #--------------------------------------------------------------
 # DB Instance Variables
