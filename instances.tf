@@ -24,7 +24,7 @@ resource "aws_instance" "dev" {
 		Name = "dev"
 	}
 
-	key_name               = "${aws_key_pair.auth.id}"
+	key_name               = "${aws_key_pair.auth.key_name}"
 	vpc_security_group_ids = ["${aws_security_group.public.id}"]
 	iam_instance_profile   = "${aws_iam_instance_profile.s3_access.id}"
 	subnet_id              = "${aws_subnet.public.id}"
