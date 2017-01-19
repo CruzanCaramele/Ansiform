@@ -9,9 +9,9 @@ resource "aws_ami_from_instance" "golden" {
 	name               = "ami-${random_id.ami.b64}"
 	source_instance_id = "${aws_instance.dev.id}"
 
-	provisioner "local-exec" {
-		command = "cat <<EOF > userdata\n#!/bin/bash\n/usr/bin/aws s3 sync s3://${aws_s3_bucket.s3_bucket.bucket} /var/www/html\n/bin/touch /var/spool/cron/root\nsudo /bin/echo '*/5 * * * * aws s3 sync s3://${aws_s3_bucket.s3_bucket.bucket} /var/www/html' >> /var/spool/cronEOF"
-	}
+	# provisioner "local-exec" {
+	# 	command = "cat <<EOF > userdata\n#!/bin/bash\n/usr/bin/aws s3 sync s3://${aws_s3_bucket.s3_bucket.bucket} /var/www/html/\n/bin/touch /var/spool/cron/root\nsudo /bin/echo '*/5 * * * * aws s3 sync s3://${aws_s3_bucket.s3_bucket.bucket} /var/www/html/' >> /var/spool/cron/root"
+	# }
 }
 
 #--------------------------------------------------------------
@@ -31,12 +31,16 @@ resource "aws_launch_configuration" "launch_config" {
 	}
 }
 
+resource "random_id" "asg" {
+	byte_length = 8
+}
+
 #--------------------------------------------------------------
 # AutoScaling Group
 #--------------------------------------------------------------
 resource "aws_autoscaling_group" "scaling_group" {
 	name                	  = "asg-${aws_launch_configuration.launch_config.id}"
-	availability_zones  	  = ["${var.aws_region}a","${var.aws_region}c"]
+	availability_zones  	  = ["${var.aws_region}c","${var.aws_region}e"]
 	min_size            	  = "${var.asg_min}"
 	max_size	   	    	  = "${var.asg_max}"
 	vpc_zone_identifier 	  = ["${aws_subnet.private1.id}", "${aws_subnet.private2.id}"]
