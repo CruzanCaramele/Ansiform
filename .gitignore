@@ -2,7 +2,7 @@ terraform.tfvars
 .vagrant
 .ssh
 terraform.tfstate
-terraform.tfstate.backupinfra  
+terraform.tfstate.backup  
 aws_hosts  
 infra 
 terraform.tfstate.backup 
