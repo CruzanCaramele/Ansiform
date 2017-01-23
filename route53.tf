@@ -17,7 +17,7 @@ resource "aws_route53_record" "www" {
 	alias {
 		name 				   = "${aws_elb.prod.dns_name}"
 		zone_id 			   = "${aws_elb.prod.zone_id}"
-		evaluate_target_health = true
+		evaluate_target_health = false
 	}
 }
 
