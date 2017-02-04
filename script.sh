@@ -5,8 +5,8 @@ python get-pip.py
 pip install awscli
 
 mkdir ~/terraform
-wget https://releases.hashicorp.com/terraform/0.8.4/terraform_0.8.4_linux_amd64.zip
-unzip terraform_0.8.4_linux_amd64.zip -d ~/terraform
+wget https://releases.hashicorp.com/terraform/0.8.5/terraform_0.8.5_linux_amd64.zip
+unzip terraform_0.8.5_linux_amd64.zip -d ~/terraform
 # export PATH=$PATH:~/terraform
 
 # install ansible
