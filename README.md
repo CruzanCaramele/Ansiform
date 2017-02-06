@@ -8,5 +8,20 @@
 
 ### Prerequisites
 - [Amazon Web Services](https://aws.amazon.com) Account is needed
+- Download and install [Vagrant](https://www.vagrantup.com/downloads.html)
+- Download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+#### How to Run the Project
+- Clone this project and navigate into the **Ansiform** folder
+- run the command vagrant up and then vagrant ssh to access the Ubuntu environment
+- change directory into the **/vagrant** folder
+- create an **SSH Key** and add it to your ssh-agent
+- run command **export PATH=$PATH:~/terraform**
+- run terraform plan and supply necessary variables
+- run terraform apply to deploy the infrasture and Wordpress to AWS
+- use the IP address in the aws_hosts file to navigate to the admin portal of the Wordpress site (make required changes to your need and save)
+- run **ansible-playbook -i aws_hosts s3update.yml** to deploy the new changes after 5 mins
+- run **terraform destroy** to destroy the infrastructure. 
+
 
 
