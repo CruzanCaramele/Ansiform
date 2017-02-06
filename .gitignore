@@ -6,3 +6,5 @@ terraform.tfstate.backup
 aws_hosts  
 infra 
 terraform.tfstate.backup 
+aws
+s3update.retry
